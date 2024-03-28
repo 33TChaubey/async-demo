@@ -6,9 +6,11 @@ console.log('before');
 // });
 
 
-
-const p = getUser(1);
-p.then(user => console.log(user));
+getUser(1)
+.then(user => getRepository(user.gitHubUsername))
+.then(repos => getCommits(repos[0]))
+.then(commits => console.log('Commits', commits))
+.catch(err => console.log('Error', err.message))
 
 console.log('after');
 
@@ -36,7 +38,7 @@ function getCommits(repo, callback){
     return new Promise((resolve, reject) =>{
         setTimeout(()=>{
             console.log('Calling Github API ...');
-            callback(['commit'])
+            resolve(['commit'])
         }, 2000)
     });
 };
