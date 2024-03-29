@@ -12,6 +12,13 @@ getUser(1)
 .then(commits => console.log('Commits', commits))
 .catch(err => console.log('Error', err.message))
 
+
+// Async and Await Approach
+const user = await getUser(1);
+const repos = await getRepository(user.gitHubUsername);
+const commits = await getCommits(repos[0]);
+console.log(commits);
+
 console.log('after');
 
 
