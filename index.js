@@ -69,7 +69,7 @@ async function notifyCustomer(){
         const movies = await getTopMoview();
         console.log('Movies: ', movies);
         await sendEmail(customer.email, movies);
-        console.log('Emailsent...');
+        console.log('Email sent...');
     }
 }
 notifyCustomer();
